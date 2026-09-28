@@ -1,0 +1,76 @@
+{
+  "study_id": "TPB-v1-study-20260925",
+  "registered_at": "2026-09-25T06:16:22.271704+00:00",
+  "status": "research_only",
+  "purpose": "Freeze dates and baseline before broader data collection; no live eligibility.",
+  "sha256": {
+    "strategy.md": "8cfe75384bb7d8e4c11132da45d476892fea323de627608a1aebdf104892eced",
+    "tools/strategy.py": "b8f35262fcd2abf46ddfc036fc2ccc957add844a25f98574ede5240520ed7bd7",
+    "tools/risk.py": "4f7be303898cfde95c76ce48794a6467a54a021a64bb27e98d3923fb1cf015a2",
+    "tools/backtest.py": "e468f90553a984abde78d4d33b98cc8d25d2497ac30b934d416539eec7c04d8d",
+    "tools/history.py": "8fabdcf93200f5ca38a22b8b7c8232fdda231693e32921d3c0638142b1334c61",
+    "tools/market.py": "0b470735f60319655483b3c6b8cbdd7c7a3201bc0b13bf9743b8025df7bf2c7e",
+    "examples/backtest-current-evidence-20260925.json": "533bed1370304e90a5c95cb688cf45a529005d14552cdd9f17f9fa7a4de02bbd"
+  },
+  "periods": [
+    {
+      "role": "development",
+      "start": "2026-06-01T00:00:00Z",
+      "end_exclusive": "2026-08-01T00:00:00Z",
+      "dataset": "history-btc-dev-jun-jul-2026.json"
+    },
+    {
+      "role": "validation",
+      "start": "2026-09-04T00:00:00Z",
+      "end_exclusive": "2026-09-23T00:00:00Z",
+      "dataset": "history-btc-validation-sep04-23-2026.json"
+    },
+    {
+      "role": "prospective_holdout",
+      "start": "2026-10-01T00:00:00Z",
+      "end_exclusive": "2026-11-01T00:00:00Z",
+      "dataset": null
+    }
+  ],
+  "excluded_from_fresh_evaluation": [
+    "August 2026: hourly/four-hour data already accessed as smoke warmup; contextual/development only.",
+    "September 1-3: smoke period already evaluated.",
+    "September 23-25: market snapshots/screenshots already inspected."
+  ],
+  "baseline_config": "examples/backtest-current-evidence-20260925.json",
+  "cost_scenarios": [
+    {
+      "name": "baseline",
+      "spread_rate": "0.0002",
+      "slippage_rate": "0.0005"
+    },
+    {
+      "name": "double_execution_cost",
+      "spread_rate": "0.0004",
+      "slippage_rate": "0.001"
+    },
+    {
+      "name": "quadruple_execution_cost",
+      "spread_rate": "0.0008",
+      "slippage_rate": "0.002"
+    }
+  ],
+  "limitations": [
+    "Rates/tick reflect current evidence, not verified historical conditions.",
+    "Development lasts 61 days; not proof of coverage across market regimes.",
+    "One-minute open proxy cannot verify actionable quote within 60 seconds.",
+    "Incomplete-fill and latency scenarios are not implemented; must be specified and tested using development data before validation outcomes are read.",
+    "Prospective holdout is future data: do not download or evaluate before completion."
+  ],
+  "evaluation_policy": [
+    "Download and inspect schema, completeness and cross-timeframe OHLC only at collection stage; do not inspect validation signals or returns.",
+    "Preserve every experiment. A changed strategy receives a new version and explicit hashes.",
+    "Freeze all execution scenarios and analysis code before opening validation outcomes.",
+    "One independent 100 USDT account per period with 800-hour warmup, no trades from warmup; boundary liquidations identified, periods never compounded as one continuous account.",
+    "Same period/cost benchmarks: USDT cash and full-capital buy-and-hold with exposure caveat.",
+    "Report all signals, reasons for skips, completed vs boundary trades, net PnL/R, costs, drawdown, loss streaks, exposure, and largest-winner concentration.",
+    "For adequate samples, predeclare seeded chronological block-resampling uncertainty on development before validation. Sparse/no trades => inconclusive; no win-rate/count promotion rule.",
+    "Nonpositive net expectancy under baseline or stressed costs is adverse evidence; positive results alone do not establish an edge.",
+    "No live promotion without execution verification, uncertainty review and forward paper evidence."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "mode": "paper",
+  "account": {
+    "as_of": null,
+    "reconciled": null,
+    "equity_usdt": "100",
+    "available_usdt": "100",
+    "open_and_pending_risk_usdt": null,
+    "day_start_equity_usdt": null,
+    "week_start_equity_usdt": null,
+    "day_net_external_flows_usdt": null,
+    "week_net_external_flows_usdt": null,
+    "day_halted": null,
+    "week_halted": null
+  },
+  "plan": {
+    "as_of": null,
+    "entry": null,
+    "stop": null,
+    "target": null,
+    "buy_fee_rate": null,
+    "sell_fee_rate": null,
+    "buy_fee_currency": null,
+    "sell_fee_currency": null,
+    "slippage_rate": null,
+    "quantity_step": null,
+    "price_tick": null,
+    "min_quantity": null,
+    "max_quantity": null,
+    "min_notional": null,
+    "max_notional": null
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "purpose": "exploratory",
+  "initial_equity_usdt": "100",
+  "buy_fee_rate": "0.001",
+  "sell_fee_rate": "0.001",
+  "buy_fee_currency": "base",
+  "sell_fee_currency": "quote",
+  "spread_rate": ".0004",
+  "slippage_rate": ".001",
+  "quantity_step": "0.000001",
+  "price_tick": "0.1",
+  "min_quantity": "0",
+  "max_quantity": "120",
+  "min_notional": "5",
+  "max_notional": "1000000",
+  "fee_basis": "Current displayed account rates: user screenshot received 2026-09-24, Regular User, maker/taker 0.1000%, MNT off. Fee currency follows documented standard spot behavior; actual fills and historical fees unverified.",
+  "instrument_basis": "Current-rule exploratory scenario from instrument-btc-20260924.json: tick 0.1, base precision 0.000001, minOrderAmt 5. min_quantity 0 disables deprecated minimum-quantity check. max_quantity 120 is the stricter market ceiling applied conservatively to both types (limit ceiling 230). max_notional 1000000 is a retained local modeling cap, not a verified exchange rule. Quote-amount precision and dynamic price bands not modeled. Spread/slippage illustrative; historical rules unverified."
+}

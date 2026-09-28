@@ -1,0 +1,18 @@
+{
+  "purpose": "exploratory",
+  "initial_equity_usdt": "100",
+  "buy_fee_rate": "0.001",
+  "sell_fee_rate": "0.001",
+  "buy_fee_currency": "base",
+  "sell_fee_currency": "quote",
+  "spread_rate": "0.0002",
+  "slippage_rate": "0.0005",
+  "quantity_step": "0.000001",
+  "price_tick": "0.01",
+  "min_quantity": "0.000001",
+  "max_quantity": "10",
+  "min_notional": "5",
+  "max_notional": "1000000",
+  "fee_basis": "Illustrative assumptions only; not verified for this account or historical period.",
+  "instrument_basis": "Illustrative BTC spot restrictions only; replace with dated verified rules."
+}

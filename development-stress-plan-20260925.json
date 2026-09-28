@@ -1,0 +1,76 @@
+{
+  "registered_at": "2026-09-25T06:24:33.670638+00:00",
+  "scope": "Development only; validation outcomes must remain unopened",
+  "dataset": "history-btc-dev-jun-jul-2026.json",
+  "dataset_sha256": "4c8de39beb437219f1eaea301c244cf9871667b56fa8e99b124ca2762e1c65ee",
+  "strategy": "TPB-v1",
+  "code_sha256": {
+    "backtest.py": "526973854c7cf1c03c5bf5dc04f5d0ab538ba7da93a61f1e921aef5d6dce366b",
+    "strategy.py": "b8f35262fcd2abf46ddfc036fc2ccc957add844a25f98574ede5240520ed7bd7",
+    "risk.py": "4f7be303898cfde95c76ce48794a6467a54a021a64bb27e98d3923fb1cf015a2",
+    "history.py": "8fabdcf93200f5ca38a22b8b7c8232fdda231693e32921d3c0638142b1334c61",
+    "market.py": "0b470735f60319655483b3c6b8cbdd7c7a3201bc0b13bf9743b8025df7bf2c7e"
+  },
+  "scenarios": [
+    {
+      "name": "baseline",
+      "config": "examples/stress-baseline-config.json",
+      "execution_model": "examples/stress-baseline-execution.json",
+      "config_sha256": "533bed1370304e90a5c95cb688cf45a529005d14552cdd9f17f9fa7a4de02bbd",
+      "execution_model_sha256": "f058248c210c9612d3874b0aa8922260c5d58677521c5792eb21b33457ceb784",
+      "output": "report-development-baseline-20260925.json"
+    },
+    {
+      "name": "double_cost",
+      "config": "examples/stress-double_cost-config.json",
+      "execution_model": "examples/stress-double_cost-execution.json",
+      "config_sha256": "36a520bc3197e4b80a2871869860ddd9d1041d299a22b4dc73e6a084f466d243",
+      "execution_model_sha256": "f058248c210c9612d3874b0aa8922260c5d58677521c5792eb21b33457ceb784",
+      "output": "report-development-double_cost-20260925.json"
+    },
+    {
+      "name": "quadruple_cost",
+      "config": "examples/stress-quadruple_cost-config.json",
+      "execution_model": "examples/stress-quadruple_cost-execution.json",
+      "config_sha256": "809bdefe9bda7c74237ddeb67affdcdae064c6e017ae6237e7cbcd092fbd4cf9",
+      "execution_model_sha256": "f058248c210c9612d3874b0aa8922260c5d58677521c5792eb21b33457ceb784",
+      "output": "report-development-quadruple_cost-20260925.json"
+    },
+    {
+      "name": "entry_delay_60s",
+      "config": "examples/stress-entry_delay_60s-config.json",
+      "execution_model": "examples/stress-entry_delay_60s-execution.json",
+      "config_sha256": "533bed1370304e90a5c95cb688cf45a529005d14552cdd9f17f9fa7a4de02bbd",
+      "execution_model_sha256": "10588fd17d74ed10e039dfa2b92e53ab3c37d1ab80f7bd9932e2a449c2a936df",
+      "output": "report-development-entry_delay_60s-20260925.json"
+    },
+    {
+      "name": "half_exit_retry_1m",
+      "config": "examples/stress-half_exit_retry_1m-config.json",
+      "execution_model": "examples/stress-half_exit_retry_1m-execution.json",
+      "config_sha256": "533bed1370304e90a5c95cb688cf45a529005d14552cdd9f17f9fa7a4de02bbd",
+      "execution_model_sha256": "0edc5617fdc0e4e309e444178d3e53cf17a87e315f4cb143a883e01213b8a115",
+      "output": "report-development-half_exit_retry_1m-20260925.json"
+    },
+    {
+      "name": "failed_exit_retry_5m",
+      "config": "examples/stress-failed_exit_retry_5m-config.json",
+      "execution_model": "examples/stress-failed_exit_retry_5m-execution.json",
+      "config_sha256": "533bed1370304e90a5c95cb688cf45a529005d14552cdd9f17f9fa7a4de02bbd",
+      "execution_model_sha256": "89ea8fa5b42f06291ffdfc3a2b0b4e207202fbb646bc0f1711dea60d29f69226",
+      "output": "report-development-failed_exit_retry_5m-20260925.json"
+    }
+  ],
+  "protocol": [
+    "All six scenarios selected before development outcomes. No probabilities assigned.",
+    "First-exit fraction applies to stop, target, time and boundary exits. Entry fills remain full.",
+    "Residual is retried once per specified bar delay at adverse open; full residual fill assumed if order constraints allow. Further minimum/order failures retain exposure until retry or dataset end.",
+    "Quantity below an order minimum may be a partial fill of the original accepted order; residual replacement orders must independently satisfy constraints.",
+    "No automatic OCO/real order action modeled; residual retry is a hypothetical contingency, not verified exchange behavior.",
+    "60s entry delay expires the entry window, regardless of the later price. Subminute delays rejected.",
+    "Unresolved inventory stays marked at last close without hypothetical liquidation; total PnL includes unrealized value before future exit costs.",
+    "Stop-before-target remains enforced; no claim to reproduce intrabar timing or depth.",
+    "Benchmarks share assumed spread/slippage/fees but not entry delays or exit failures; no risk/execution-matched superiority claim.",
+    "No bootstrap intervals computed in this stage. Freeze uncertainty method before validation."
+  ]
+}

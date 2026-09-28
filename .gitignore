@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.local.json
+snapshot*.json
+signals*.json
+history-*.json
+report-*.json
+
+# Local forward-observation evidence and process logs
+observations/

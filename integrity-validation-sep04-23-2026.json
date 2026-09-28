@@ -1,0 +1,13 @@
+{
+  "dataset": "history-btc-validation-sep04-23-2026.json",
+  "sha256": "60872daa81ce3a55ba97befbc14b7577a30e3bce5b9ddf6a399bb2fdecb3d50c",
+  "checked_at": "2026-09-25T06:19:49.917590+00:00",
+  "validation": "schema, exact boundaries/counts, no gaps/duplicates, OHLC quality and cross-timeframe consistency passed",
+  "bars": {
+    "h1_including_warmup": 1256,
+    "h4_including_warmup": 314,
+    "execution": 27360
+  },
+  "signals_evaluated": false,
+  "returns_evaluated": false
+}

@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-09-24T15:16:38.662855+00:00",
+  "host": "api.bybit.com",
+  "proxy_types_present": [],
+  "custom_ca_config_present": false,
+  "route": "direct HTTPS; no automatic proxy/fallback",
+  "checks": [
+    {
+      "stage": "dns",
+      "ok": false,
+      "failure": "dns_timeout",
+      "message": "dns did not finish within 12 seconds."
+    }
+  ],
+  "ok": false
+}

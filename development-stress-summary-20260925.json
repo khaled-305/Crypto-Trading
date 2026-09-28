@@ -1,0 +1,162 @@
+{
+  "scope": "Development only; no inference of profitability",
+  "plan": "development-stress-plan-20260925.json",
+  "scenarios": [
+    {
+      "ending_equity_usdt": "100",
+      "total_net_pnl_usdt": "0",
+      "completed_strategy_trades": 0,
+      "boundary_liquidations": 0,
+      "mean_net_r_completed": null,
+      "mean_net_pnl_completed": null,
+      "win_rate_completed": null,
+      "modeled_intrabar_drawdown_usdt": "0",
+      "decision_counts": {
+        "missed": 20
+      },
+      "unresolved_inventory_mark_usdt": "0",
+      "benchmarks": {
+        "cash_net_pnl_usdt": "0",
+        "buy_hold_available": true,
+        "buy_hold_net_pnl_usdt": "-14.9639365920",
+        "buy_hold_return_fraction": "-0.14963936592",
+        "buy_hold_modeled_drawdown_usdt": "22.0531396",
+        "note": "100% buy-and-hold exposure; not risk-matched to the strategy. USDT valuation basis."
+      },
+      "name": "baseline",
+      "report": "report-development-baseline-20260925.json",
+      "signals": 20,
+      "unresolved_position": false
+    },
+    {
+      "ending_equity_usdt": "100",
+      "total_net_pnl_usdt": "0",
+      "completed_strategy_trades": 0,
+      "boundary_liquidations": 0,
+      "mean_net_r_completed": null,
+      "mean_net_pnl_completed": null,
+      "win_rate_completed": null,
+      "modeled_intrabar_drawdown_usdt": "0",
+      "decision_counts": {
+        "missed": 20
+      },
+      "unresolved_inventory_mark_usdt": "0",
+      "benchmarks": {
+        "cash_net_pnl_usdt": "0",
+        "buy_hold_available": true,
+        "buy_hold_net_pnl_usdt": "-15.0638419359",
+        "buy_hold_return_fraction": "-0.150638419359",
+        "buy_hold_modeled_drawdown_usdt": "22.0368522",
+        "note": "100% buy-and-hold exposure; not risk-matched to the strategy. USDT valuation basis."
+      },
+      "name": "double_cost",
+      "report": "report-development-double_cost-20260925.json",
+      "signals": 20,
+      "unresolved_position": false
+    },
+    {
+      "ending_equity_usdt": "100",
+      "total_net_pnl_usdt": "0",
+      "completed_strategy_trades": 0,
+      "boundary_liquidations": 0,
+      "mean_net_r_completed": null,
+      "mean_net_pnl_completed": null,
+      "win_rate_completed": null,
+      "modeled_intrabar_drawdown_usdt": "0",
+      "decision_counts": {
+        "missed": 20
+      },
+      "unresolved_inventory_mark_usdt": "0",
+      "benchmarks": {
+        "cash_net_pnl_usdt": "0",
+        "buy_hold_available": true,
+        "buy_hold_net_pnl_usdt": "-15.2632964148",
+        "buy_hold_return_fraction": "-0.152632964148",
+        "buy_hold_modeled_drawdown_usdt": "22.0042774",
+        "note": "100% buy-and-hold exposure; not risk-matched to the strategy. USDT valuation basis."
+      },
+      "name": "quadruple_cost",
+      "report": "report-development-quadruple_cost-20260925.json",
+      "signals": 20,
+      "unresolved_position": false
+    },
+    {
+      "ending_equity_usdt": "100",
+      "total_net_pnl_usdt": "0",
+      "completed_strategy_trades": 0,
+      "boundary_liquidations": 0,
+      "mean_net_r_completed": null,
+      "mean_net_pnl_completed": null,
+      "win_rate_completed": null,
+      "modeled_intrabar_drawdown_usdt": "0",
+      "decision_counts": {
+        "missed": 20
+      },
+      "unresolved_inventory_mark_usdt": "0",
+      "benchmarks": {
+        "cash_net_pnl_usdt": "0",
+        "buy_hold_available": true,
+        "buy_hold_net_pnl_usdt": "-14.9639365920",
+        "buy_hold_return_fraction": "-0.14963936592",
+        "buy_hold_modeled_drawdown_usdt": "22.0531396",
+        "note": "100% buy-and-hold exposure; not risk-matched to the strategy. USDT valuation basis."
+      },
+      "name": "entry_delay_60s",
+      "report": "report-development-entry_delay_60s-20260925.json",
+      "signals": 20,
+      "unresolved_position": false
+    },
+    {
+      "ending_equity_usdt": "100",
+      "total_net_pnl_usdt": "0",
+      "completed_strategy_trades": 0,
+      "boundary_liquidations": 0,
+      "mean_net_r_completed": null,
+      "mean_net_pnl_completed": null,
+      "win_rate_completed": null,
+      "modeled_intrabar_drawdown_usdt": "0",
+      "decision_counts": {
+        "missed": 20
+      },
+      "unresolved_inventory_mark_usdt": "0",
+      "benchmarks": {
+        "cash_net_pnl_usdt": "0",
+        "buy_hold_available": true,
+        "buy_hold_net_pnl_usdt": "-14.9639365920",
+        "buy_hold_return_fraction": "-0.14963936592",
+        "buy_hold_modeled_drawdown_usdt": "22.0531396",
+        "note": "100% buy-and-hold exposure; not risk-matched to the strategy. USDT valuation basis."
+      },
+      "name": "half_exit_retry_1m",
+      "report": "report-development-half_exit_retry_1m-20260925.json",
+      "signals": 20,
+      "unresolved_position": false
+    },
+    {
+      "ending_equity_usdt": "100",
+      "total_net_pnl_usdt": "0",
+      "completed_strategy_trades": 0,
+      "boundary_liquidations": 0,
+      "mean_net_r_completed": null,
+      "mean_net_pnl_completed": null,
+      "win_rate_completed": null,
+      "modeled_intrabar_drawdown_usdt": "0",
+      "decision_counts": {
+        "missed": 20
+      },
+      "unresolved_inventory_mark_usdt": "0",
+      "benchmarks": {
+        "cash_net_pnl_usdt": "0",
+        "buy_hold_available": true,
+        "buy_hold_net_pnl_usdt": "-14.9639365920",
+        "buy_hold_return_fraction": "-0.14963936592",
+        "buy_hold_modeled_drawdown_usdt": "22.0531396",
+        "note": "100% buy-and-hold exposure; not risk-matched to the strategy. USDT valuation basis."
+      },
+      "name": "failed_exit_retry_5m",
+      "report": "report-development-failed_exit_retry_5m-20260925.json",
+      "signals": 20,
+      "unresolved_position": false
+    }
+  ]
+}

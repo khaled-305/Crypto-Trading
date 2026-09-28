@@ -1,0 +1,46 @@
+{
+  "url": "https://api.bybit.com/v5/market/instruments-info?category=spot&symbol=BTCUSDT",
+  "received_at": "2026-09-24T21:11:55.910598+00:00",
+  "sha256": "c65ab3ae38781c3ba3a67d8f95ca6fe36124a8b74a6d90bd7e9c4c417ef041d6",
+  "response": {
+    "retCode": 0,
+    "retMsg": "OK",
+    "result": {
+      "category": "spot",
+      "list": [
+        {
+          "symbolId": 9,
+          "symbol": "BTCUSDT",
+          "baseCoin": "BTC",
+          "quoteCoin": "USDT",
+          "innovation": "0",
+          "status": "Trading",
+          "marginTrading": "utaOnly",
+          "stTag": "0",
+          "lotSizeFilter": {
+            "basePrecision": "0.000001",
+            "quotePrecision": "0.0000001",
+            "minOrderQty": "0.000001",
+            "maxOrderQty": "230",
+            "minOrderAmt": "5",
+            "maxOrderAmt": "8000000",
+            "maxLimitOrderQty": "230",
+            "maxMarketOrderQty": "120",
+            "postOnlyMaxLimitOrderSize": "1150"
+          },
+          "priceFilter": {
+            "tickSize": "0.1"
+          },
+          "riskParameters": {
+            "priceLimitRatioX": "0.005",
+            "priceLimitRatioY": "0.01"
+          },
+          "symbolType": "",
+          "xstockMultiplier": "1"
+        }
+      ]
+    },
+    "retExtInfo": {},
+    "time": 1790284315696
+  }
+}

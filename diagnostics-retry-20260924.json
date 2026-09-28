@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-09-24T17:08:35.806495+00:00",
+  "host": "api.bybit.com",
+  "proxy_types_present": [],
+  "custom_ca_config_present": false,
+  "route": "direct HTTPS; no automatic proxy/fallback",
+  "checks": [
+    {
+      "stage": "dns",
+      "ok": true,
+      "addresses_resolved": 4
+    },
+    {
+      "stage": "tls",
+      "ok": true,
+      "tls_version": "TLSv1.3",
+      "certificate_verified": true
+    },
+    {
+      "stage": "api",
+      "ok": true,
+      "valid_spot_json": true,
+      "exchange_time_ms": 1790269719031
+    }
+  ],
+  "ok": true
+}

@@ -1,0 +1,5 @@
+{
+  "entry_delay_ms": 0,
+  "exit_first_fill_fraction": ".5",
+  "residual_retry_delay_bars": 1
+}
