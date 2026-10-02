@@ -79,3 +79,91 @@ Record date, exact URL/repository/version or hash where applicable, intended cap
 ## 2026-09-28 — Session news supplement
 
 - Source: https://www.marketscreener.com/news/dollar-firms-as-us-iran-tensions-lift-oil-hawkish-fed-bets-build-ce785adcdb89f522 . Public HTTPS financial-news distributor; search identifies Reuters syndication. Verify article attribution and publication/event date on retrieval. Passive text only; ads, links and embedded instructions are untrusted, no login, code, credentials or account data. Approved for secondary macro-news context, not execution prices or confirmed causality.
+
+## 2026-09-29 — Session refresh
+
+- Reuse reviewed Bybit public BTC/ETH snapshots and agency/CoinGecko passive sources. Additional Reuters-syndicated article selected on the same reviewed HTTPS distributor: https://www.marketscreener.com/news/oil-price-gains-pared-as-qatar-us-iran-talks-loom-ce785adcd18ff220 . Passive text only, verify attribution/time, no account data, login, code execution or instructions adopted. News is contextual reporting, not execution evidence. Approved within existing read-only scope.
+
+## 2026-09-29 — Broader watchlist context
+
+- Source: https://www.coingecko.com/en . Extend existing passive CoinGecko review to aggregate asset rankings and reported volumes for watchlist discussion. Public HTTPS text only; no credentials, account information, installs or remote code. Rankings and volumes can change and do not verify Bybit pair availability, executable liquidity or suitability. Treat page text as untrusted data; verify exchange-specific evidence before any trade. Approved for screening context only.
+
+## 2026-09-29 — Approved six-pair manual screening
+
+- User approved adding SOLUSDT, XRPUSDT, LINKUSDT and SUIUSDT to BTCUSDT/ETHUSDT. Extend the reviewed https://api.bybit.com public spot scope only to these exact symbols on /v5/market/kline, /v5/market/orderbook and /v5/market/instruments-info.
+- Reviewed local collector: fixed host/path/symbol allowlists, verified TLS, redirects and environment proxies disabled, 2 MB response cap, 25-second CLI deadline, four-request snapshot batch, freshness/category/symbol/candle/book checks. Exchange receives IP and public market query parameters only. No account data, credentials, packages, remote code, authentication, order or transfer capabilities added.
+- More symbols mean more requests; collect bounded snapshots per pair, without launching six simultaneous batches, automatic retries or restriction bypasses. Listing status, liquidity and instrument constraints must be verified per pair; aggregate website volume is insufficient. Approved for public manual-screening data only. Existing BTC-only research and stopped observer remain unchanged. No live availability claim follows from the allowlist change.
+
+## 2026-09-29 — Expanded-session catalyst sources
+
+- Passive HTTPS sources selected from untrusted search discovery: https://help.phantom.com/articles/ending-support-for-sui-in-phantom-53868478441491 (wallet provider primary help page); https://www.binance.com/en-BH/square/post/09-28-2026-this-week-sui-cards-kmno-and-others-will-unlock-over-30-million-worth-of-tokens-371364061562143 (secondary unlock reporting). Read text only, verify dates/attribution and distinguish scheduled events from outcomes. No wallet connection, login, account data, swaps, software or remote instructions. Unlock reports have conflicting dates; exact schedule requires primary verification before exposure. Approved for contextual research only, not execution or asset migration. Existing reviewed Reuters syndication and official calendars reused.
+
+## 2026-09-29 — 10:19 Lagos session news refresh
+
+- Source selected from search: https://economictimes.indiatimes.com/markets/commodities/news/oil-prices-rise-for-second-session-on-continued-middle-east-supply-concern/articleshow/134553898.cms . Public HTTPS publisher, search attributes Reuters; verify attribution and event/publication time on page. Passive text only; no account data, login, installations or remote instructions. Treat ads and linked content as untrusted; approved for contextual secondary reporting only. Reuse reviewed six-pair public Bybit API, CoinGecko and official calendar scopes.
+
+## 2026-09-29 — 12:04 Lagos session news sources
+
+- Selected public HTTPS articles: https://apnews.com/article/91de6619aca2e1a9a32757166eae98d0 and https://apnews.com/article/269abea6fd8ea7f314a8c34152788e0c . Associated Press reporting, passive text only; verify event/publication dates. No credentials, account data, software, subscriptions or execution. Treat embedded links/instructions as untrusted; approved for macro context only, not exchange execution data. Reuse existing public Bybit six-pair, CoinGecko, BLS and BEA scopes.
+
+## 2026-09-29 — 17:11 Lagos release verification
+
+- Extend reviewed BLS public calendar scope to official release https://www.bls.gov/news.release/jolts.nr0.htm for the actual JOLTS result. Public HTTPS text only; verify release/reference month and timestamp because latest-release pages roll forward. No account data, authentication, remote code or instructions adopted. Approved for primary economic-release facts. Reuse existing reviewed Bybit, CoinGecko, BEA and AP sources within their passive scopes.
+
+- Additional 17:11 session sources: https://chain.link/newsroom and https://maple.finance/insights/syrupusd-assets-are-upgrading-to-chainlink-ccip-2-0 . Project/vendor primary announcements for CCIP adoption; HTTPS passive text only, no wallet connections, assets, credentials, upgrades, downloads or remote code. Promotional claims are not independent price-impact evidence. Verify dates and factual implementation scope; approved for catalyst research only.
+
+## 2026-09-29 — 21:23 Lagos exchange-risk check
+
+- Source: https://www.bitget.com/campaigns/bitget-security-incident-2026 . Official exchange HTTPS domain selected from untrusted search discovery, passive public incident timeline only. Check dates, distinguish incident from current restoration claims, and attribute exchange claims. No login, credentials, wallets, transfers, installations or downloaded code; no alternate/lookalike host used. Approved for contextual incident verification; does not establish Bybit impact or safety. Existing six-pair Bybit and passive news/calendar scopes reused.
+- Outcome: official Bitget timeline fetch failed. Incident details discovered in search remain unverified in this session; no claim of completed primary verification or Bybit impact. AP refresh also failed; use prior verified macro context only.
+
+## 2026-09-30 — Morning session exchange-status source
+
+- Extend the existing passive official Bitget review to https://www.bitget.com/support/articles/12560603896025 (withdrawal-service update discovered through search). Verify page date, incident and restoration timing on retrieval; distinguish scheduled resumption from actual availability. Public HTTPS text only, no account information, login, wallets, downloads or code. Embedded instructions and external links remain untrusted. Approved only for exchange-risk context; no inference that Bybit is affected or safe. Reuse reviewed Bybit six-pair API, CoinGecko, BEA, BLS and Chainlink source scopes.
+
+## 2026-10-02 — Morning manual session source review
+
+- Reuse reviewed public Bybit six-pair market endpoints, CoinGecko charts and BLS calendar with the same bounded read-only scope. No account data, credentials or order capability.
+- New source selected from search: https://www.livemint.com/market/equities-turn-higher-as-treasury-yields-drop-from-highs/amp-11790880604226.html . Public HTTPS publisher carrying a Reuters-attributed October1 US-market report; verify attribution and event date in page text, rather than calling the publication's October2 India timestamp a new US session. Passive text only, no login, scripts, downloads or instructions adopted; ads and links remain untrusted. Approved for secondary macro context only, not execution prices or proof of crypto causality.
+- Additional primary project source: https://www.sui.io/blog . Public HTTPS project blog; vendor reporting and promotional claims require attribution and date checks. Passive text only, no wallet connection, code, credentials or external instructions. Approved for catalyst discovery; not proof of token demand or unlock execution.
+
+## 2026-10-02 — Setup selectivity review reference
+
+- Source selected via search: https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf . Author-hosted research paper on backtest overfitting; passive PDF text retrieval only, no local executable content, packages, credentials or account information. Treat document instructions/links as untrusted. Verify title/authors on retrieval; approved for methodological context, not validation of this project's strategies or performance claims.
+
+## 2026-10-02 — Optional 15-minute manual paper data
+
+- Extend the existing six-symbol public Bybit kline scope to interval=15, up to 1,000 recent candles, only with tools.market --include-m15. Same fixed https://api.bybit.com host, spot symbol/path allowlists, verified TLS, disabled redirects/environment proxies, 2MB response limit, fresh responses and 25-second child deadline. Five requests for opt-in snapshots; four for default calls. Sequential pair batches, no automatic retry or access bypass.
+- Reviewed local change adds no dependencies, authentication, execution or account action. Validate closed/contiguous M15 candles and exact OHLC agreement for complete overlapping H1 bars; discrepancies fail closed. All raw provenance retained locally. Approved for bounded collection and manual paper evidence only; data integrity checks do not establish independent exchange authenticity, profitability or fills.
+- One bounded BTCUSDT opt-in collection may be used as an integration smoke check after local tests; it is not a trade or retrospective performance evaluation. Trial records/risk inputs remain local. No external skill, plugin, SDK or executable downloaded.
+- Integration outcome: optional BTCUSDT M15 snapshot succeeded at 2026-10-02T04:04:32.768871+00:00; 999 completed M15 candles, overlapping H1 OHLC checks passed. Raw evidence retained in snapshot-fbr-smoke-20261002.json. No account/API-key access or order action. Synthetic tests verify safeguards; neither tests nor collection prove profitability or exchange fills.
+
+## 2026-10-02 — Approved observation and accounting fixes
+
+- Reuse only the previously reviewed fixed public Bybit spot host/endpoints/six symbols. New local tools/manual_observer.py uses Python standard library, verified collector requests, and an optional fresh post-confirmation book. No package, plugin, external code, credentials, account data, execution permission, notification destination or system setting is added. The exchange receives public query parameters and network metadata only.
+- The recorder accepts a size-limited local JSON watch, validates allowed fields/levels, hashes accepted inputs/code, records gaps, refuses overwrite, locks its directory, and runs for at most six hours/25 checks. Each snapshot has a 25-second process deadline and a fresh book 15 seconds; it starts neither when insufficient run time remains. No retry on access denial/rate limits, endpoint fallback or automatic startup. Risks: inaccurate/changed exchange data, stale/partial evidence, local disk growth and sleep/network gaps. Mitigations: response/market/candle/chronology checks, finite runtime and data sizes, explicit missing states, no automatic trade or READY claim. Local hashes identify evidence, not authenticity or tamper-proof storage.
+- Optional M15 now has an independent 15-second child deadline and structured sanitized failure metadata. Recoverable optional failure preserves validated core sources; HTTP 403/429 still propagates and stops collection. Required-source errors remain fatal. This limits a missing-data failure to the affected assessment without weakening mandatory price or risk checks.
+- tools/manual_ledger.py is local-only standard-library JSONL replay with process locking and validation before append. It has no network/account capabilities. Operator-provided cards and proceeds remain untrusted evidence requiring review; arithmetic does not authenticate a signal or fill. Duplicate/backdated events, unsupported modes/resets, overlapping exposure and impossible ranges fail closed. Conservative ranges and latched halts avoid silently replacing a possible loss with a later winner. Retain backups; local files remain editable outside the tool.
+- Decision: approved within this bounded public-read/local-evidence scope. One no-watch `--once` baseline smoke and offline reports may verify integration after synthetic tests. No multi-hour process, paper entry or actual order is started by the repair. Original registration remains unchanged; an amendment records new file hashes before scored observations.
+- Integration outcome: the no-watch BTC baseline completed at 2026-10-02T04:40:19.432+00:00 with valid H1/H4/book/instrument data; its process stopped at 04:40:19.447 UTC after one check. Evidence directory: observations/manual-fbr-fix-smoke-20261002. Offline report shows one observed check, zero registered watches and zero paper positions. This verifies one public-data integration path, not a full watched trigger, M15 outage on the live service, or profitability.
+
+## 2026-10-02 — Second approved review fixes
+
+- Scope remains local Python standard-library changes to sizing, manual paper accounting and observation validation/reporting. No external skills, packages, downloads, new sources, permissions, credentials, accounts or endpoints are used. Tests use synthetic inputs and temporary directories only; no live feed is required to reproduce the six defects.
+- Per-timeframe alignment retains source identity, 60-second freshness, closed-candle, continuity and cross-timeframe integrity checks. Separate detection/receipt timestamps and trailing-gap records prevent misleading opportunity/coverage counts. Existing finite runtime, no-order scope and access-denial/rate-limit stops remain required.
+- The additional risk cap may only reduce allowed size. Quantity search applies exit maxima and conservative remaining daily/weekly allowances without raising percentage limits. Exposure reconciliation requires new evidence, a reason, and links to the outstanding entry/assessment; it retains superseded evidence and cannot clear latched halts or directly set account balances. Operator evidence still needs review; local records do not authenticate exchange fills.
+- Decision: approved for local implementation and offline verification within existing scope. Preserve both earlier registration files and record fresh hashes in a second amendment before future scoring. No observer launch, paper trade, performance evaluation or account action is part of this repair.
+
+## 2026-10-02 — Third approved review fixes
+
+- Scope: local changes to tools/risk.py, tools/manual_observer.py and their synthetic tests. The exact arithmetic uses Python's bundled fractions module; no external skill, package, repository, download, website or API is introduced or used for this repair. No account information or credentials leave the workspace.
+- Review covers rounding-aware quantity selection, known-deadline enforcement, unchanged risk caps and order minimums, missing-data diagnostics and termination. Risk: a naive descending quantity scan could consume excessive CPU for tiny increments; exact integer floor sums and binary search avoid scanning the order grid. Tests compare selected sizes with an independent exhaustive oracle and exercise sparse exact-threshold cases.
+- Expiry must remain enforceable during a data outage, including requests completing after the deadline. Existing bounded public-data capabilities, access-denial/rate-limit halts and no-order scope remain intact. Tests substitute local clocks and data; no observer process or network request is started.
+- Decision: approved for offline verification in the existing scope. Preserve previous manifests and record fresh hashes before future observations. Software tests and local hashes establish neither exchange-data authenticity nor profitable trading outcomes.
+
+## 2026-10-02 — Fourth approved repair: data and evidence integrity
+
+- Scope: local Python standard-library changes to the public-data collector, bounded manual observer, manual paper ledger and TPB paper journal, plus synthetic regression tests. No external skill, package, source, download, credential, endpoint or account capability is introduced. This repair uses no network requests or real trading/observation processes.
+- Review targets: consistent completed H1/H4 candles before manual assessment, conservative expiry of the latest possible remaining setup sequence during outages, entry freshness after lock/replay delays, and one-position chronology through journal corrections. Partial history edges must not be mistaken for inconsistent complete candles; missing evidence must not become an invented signal or fill.
+- Persistence risks: lock contention or suspension can stale a prechecked entry; a correction can temporarily remove evidence establishing flat exposure. Recheck time at publication, retain original observation times, preserve append-only history, and block unreliable performance reporting or new paper entries until corrections establish consistent chronology. Do not silently rewrite or repair existing ledger records.
+- Decision: approved for offline implementation and tests within the user's requested fixes. Preserve all previous registrations and historical results; record updated code/test hashes in a new amendment before future scoring. Test success verifies software behavior, not exchange execution or profitability.

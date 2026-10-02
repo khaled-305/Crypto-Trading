@@ -120,7 +120,10 @@ class MarketTests(unittest.TestCase):
     def test_endpoint_restrictions_before_network(self):
         with patch('urllib.request.build_opener') as opener:
             for path, params in [('/v5/order/create', {'category':'spot','symbol':'BTCUSDT'}),
-                                 ('/v5/market/kline', {'category':'linear','symbol':'BTCUSDT'})]:
+                                 ('/v5/market/kline', {'category':'linear','symbol':'BTCUSDT'}),
+                                 ('/v5/market/kline', {'category':'spot','symbol':'UNREVIEWEDUSDT'}),
+                                 ('/v5/order/create', {'category':'spot','symbol':'SOLUSDT'}),
+                                 ('/v5/market/kline', {'category':'linear','symbol':'SOLUSDT'})]:
                 with self.assertRaises(ValueError): request(path, params)
             opener.assert_not_called()
         with self.assertRaises(ValueError): NoRedirect().redirect_request(None)

@@ -3,6 +3,7 @@ import argparse
 import json
 from datetime import datetime, timezone
 from decimal import Decimal, ROUND_FLOOR, ROUND_CEILING
+from fractions import Fraction
 
 
 def dec(value):
@@ -47,7 +48,54 @@ def ceil_step(x, step):
     return (x / step).to_integral_value(rounding=ROUND_CEILING) * step
 
 
-def size_plan(data, now=None):
+def _floor_sum(count, denominator, numerator, offset):
+    """Sum floor((numerator*i + offset) / denominator), 0 <= i < count."""
+    total = 0
+    while True:
+        whole, numerator = divmod(numerator, denominator)
+        total += whole * count * (count - 1) // 2
+        whole, offset = divmod(offset, denominator)
+        total += whole * count
+        height = numerator * count + offset
+        if height < denominator:
+            return total
+        count, offset = divmod(height, denominator)
+        denominator, numerator = numerator, denominator
+
+
+def _largest_reward_feasible_units(max_units, inventory_fraction, required_fraction):
+    """Largest n with floor(n*inventory_fraction) >= n*required_fraction.
+
+    Reward/risk is not monotonic when base fees create rounded dust. Count
+    integer inventory units in [n*required_fraction, n*inventory_fraction]
+    instead: each n contributes a nonnegative count, positive exactly when
+    that gross size passes. The final increase in the cumulative count finds
+    the largest passing size without walking potentially billions of steps.
+    """
+    if required_fraction > inventory_fraction or max_units <= 0:
+        return 0
+    b, c = inventory_fraction, required_fraction
+
+    def count_through(units):
+        return (units + _floor_sum(units, b.denominator, b.numerator, b.numerator)
+                - _floor_sum(units, c.denominator, c.numerator,
+                             c.numerator + c.denominator - 1))
+
+    total = count_through(max_units)
+    if not total:
+        return 0
+    lo, hi = 1, max_units
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if count_through(mid) < total:
+            lo = mid + 1
+        else:
+            hi = mid
+    return lo
+
+
+def size_plan(data, now=None, *, risk_cap_usdt=None):
+    """Size within every account/order limit; an extra risk cap can only tighten them."""
     now = now or datetime.now(timezone.utc)
     if data['mode'] != 'paper':
         raise ValueError('Only paper calculations are supported')
@@ -70,6 +118,8 @@ def size_plan(data, now=None):
         flows = dec(a[f'{period}_net_external_flows_usdt'])
         used = max(dec(0), start + flows - equity)
         budgets[f'{period}_remaining'] = start * dec(rate) - used - open_risk
+    if risk_cap_usdt is not None:
+        budgets['additional_risk_cap'] = positive(risk_cap_usdt)
     budget = min(budgets.values())
     if budget <= 0:
         raise ValueError('No remaining risk allowance')
@@ -101,24 +151,40 @@ def size_plan(data, now=None):
         target_net = sell_qty * target_fill * (1 - sell_fee)
         return spent, spent - stop_net, target_net - spent, sell_qty, base_net - sell_qty
 
-    # Loss is monotonic on gross quantity increments; binary search includes dust loss.
+    # Cash, loss and exit notional are monotonic on gross quantity increments.
+    # Include the target maximum during sizing so a smaller feasible trade survives.
     lo, hi = 0, int(floor_step(min(max_qty, max_value / entry_fill, cash / entry_fill), step) / step)
     while lo < hi:
         mid = (lo + hi + 1) // 2
-        spent, loss, _, _, _ = amounts(dec(mid) * step)
-        if spent <= cash and loss <= budget:
+        spent, loss, _, sell_qty, _ = amounts(dec(mid) * step)
+        if (spent <= cash and loss <= budget and sell_qty <= max_qty
+                and sell_qty * target_fill <= max_value):
             lo = mid
         else:
             hi = mid - 1
     qty = dec(lo) * step
     spent, loss, reward, sell_qty, dust = amounts(qty)
+    if qty > 0 and loss > 0 and reward < 2 * loss:
+        # With n gross increments and m sellable increments, reward >= 2*loss
+        # means m*(target + 2*stop)*(1-sell_fee) >= 3*n*unit_purchase_cost.
+        # Fractions keep the counting threshold exact at the 2:1 boundary.
+        inventory_fraction = (1 - Fraction(buy_fee)
+                              if p['buy_fee_currency'] == 'base' else Fraction(1))
+        purchase_cost = Fraction(entry_fill) * (
+            1 + Fraction(buy_fee) if p['buy_fee_currency'] == 'quote' else 1)
+        exit_value = (Fraction(target_fill) + 2 * Fraction(stop_fill)) * (1 - Fraction(sell_fee))
+        units = _largest_reward_feasible_units(lo, inventory_fraction, 3 * purchase_cost / exit_value)
+        if not units:
+            raise ValueError('Net reward/risk below 2:1')
+        qty = dec(units) * step
+        spent, loss, reward, sell_qty, dust = amounts(qty)
     if qty <= 0 or sell_qty <= 0 or min(qty, sell_qty) < min_qty:
         raise ValueError('Size is below exchange quantity minimum')
     if min(qty * entry_fill, sell_qty * stop_fill) < min_value:
         raise ValueError('Entry or stop exit below exchange notional minimum')
     if sell_qty * target_fill > max_value or sell_qty > max_qty:
         raise ValueError('Target exit exceeds exchange maximum')
-    if loss <= 0 or reward / loss < 2:
+    if loss <= 0 or reward < 2 * loss:
         raise ValueError('Net reward/risk below 2:1')
     return {'status': 'paper_math_pass_only', 'live_eligible': False,
             'budgets_usdt': budgets, 'binding_limits': [k for k, v in budgets.items() if v == budget],

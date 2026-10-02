@@ -1,0 +1,213 @@
+{
+  "experiment": "manual-faster-comparison-v1",
+  "amendment": "approved-review-fixes-v3",
+  "registered_at_utc": "2026-10-02T06:00:09.370023+00:00",
+  "forward_observations_start_after_utc": "2026-10-02T06:00:09.370023+00:00",
+  "mode": "paper_only",
+  "live_eligible": false,
+  "status": "repaired_awaiting_prospective_session",
+  "original_registration": "manual-comparison-registration-20261002.json",
+  "original_registration_sha256": "75447c54c7f70974cafefd41778a9126f2a21cb36ceb42e521d5c62795096ccc",
+  "previous_amendment": "manual-comparison-amendment-20261002-v2.json",
+  "previous_amendment_sha256": "17f8bca4d617366a75657210a6019cbacf36e24fd4a6710b14ea74dfef35a3ad",
+  "earlier_amendments": [
+    {
+      "path": "manual-comparison-amendment-20261002.json",
+      "sha256": "50df357943006f02ff53aece677526c84f3ea20909a20702ca93fcac94a2264b"
+    }
+  ],
+  "arms": [
+    "MPB-v1",
+    "MBR-v1",
+    "FBR-v1"
+  ],
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "XRPUSDT",
+    "LINKUSDT",
+    "SUIUSDT"
+  ],
+  "review_on_or_after": [
+    "2026-10-09",
+    "2026-10-16"
+  ],
+  "fixes": [
+    {
+      "finding": 1,
+      "implementation": "If the largest quantity within cash, risk and order maxima fails net reward/risk, use exact rational floor-sum counting to select the largest smaller passing increment. Recheck minimums and the unchanged 2:1 floor; do not scan every quantity increment."
+    },
+    {
+      "finding": 2,
+      "implementation": "Enforce known entry/watch deadlines before another request and at return for every nonterminal check, including missing M15 and post-trigger book timeouts. Preserve candle coverage, trigger timing, data-error diagnostics and prior terminal reasons; append same-slot expiry without overwriting evidence."
+    }
+  ],
+  "unchanged": [
+    "Setup triggers, structural stops and resistance targets",
+    "0.5% default, 2% trade ceiling, 1% portfolio cap, 2% daily and 4% weekly limits",
+    "Fees, cost assumptions and minimum 2:1 net reward/risk",
+    "Spot-only, one real position, FBR paper-only scope",
+    "No automatic entries, alerts or account actions",
+    "Prior reports, unused research outcomes, original registration and first amendment",
+    "All three earlier registration manifests and the empty comparison/ledger records"
+  ],
+  "frozen_files_sha256": {
+    "AGENTS.md": "c24d5095fcb77f6097b34ef7d645b3d4da155c19355de6d9a29889aabfdd95e4",
+    "manual-setups.md": "04c5d7c45b6e7701df365ddfd86f1d0cb46b7cf8d5149b45dfbb146211e60228",
+    "manual-trade-card.md": "c5e532dc7f45e722a276f6ca9a3639360d41796c89514f9beca3aae322da0e24",
+    "validation.md": "d7eddfd9e8f8bd04b87141b9035cb894e387e5c80f97ba55e16834e7877564ad",
+    "research.md": "ad18b3566169657e86bd84351d76cfeb108c49303bf7c3ab24ceab952daa14c7",
+    "security-review.md": "2872dbc0571d633484c09bfc0de6b4e99a3916aa4144775ef9eba5acf82989ca",
+    "tools/market.py": "642a8972eacccbca4d0814700766cdb965eddb282b799911c79a5461b116a3d6",
+    "tools/risk.py": "88b5a65ddfbb15fe737b1f5de4a0143e8dfa50d06bea599d4efa099d42dd54f6",
+    "tools/manual_observer.py": "4fd34b09570a0bbc55d0150d6dc9fec60c7e22825b6ff991f9cf5bdf45421a7e",
+    "tools/manual_ledger.py": "f9d1b683a050132f99afe01404a99dfca72a39d7ca6c522ddb27934bebfded9a",
+    "tests/test_market_m15.py": "50edd83a68aa6313f6c4694593e8be6a8d34d31a841cf5613851725a281c713c",
+    "tests/test_manual_observer.py": "24abe13ede6ef8f445578222e307f9d493c5fc0b96ec93efad921dae0bcb9c5e",
+    "tests/test_manual_ledger.py": "9a444504d4f0baaf963aa014643b670ce20c4358dd1e489e86246655b2fb4467",
+    "examples/manual-watch-input.json": "8fd615952e0c6580498eb49f998b309cd3d8c981e7f16bf1cf350505580a9222",
+    "tests/test_risk_constraints.py": "54a3295c8a00b4550ec6592a1a4c358b3f3b07a84996b53cdc4fff39e99ae2f9",
+    "tests/test_research.py": "77aaa06252ac7dd4980badf2dcc2b1944e9c8bd0dba14460665f775654bd69cd",
+    "manual-comparison.csv": "5d9f3f611dd82eb9dcde57addbb75b6f11cd62f1103ac3db8d10f31848873130"
+  },
+  "comparison_csv_columns": [
+    "record_id",
+    "supersedes_record_id",
+    "session_id",
+    "observed_at_utc",
+    "symbol",
+    "setup_version",
+    "mode",
+    "shadow_account",
+    "event_type",
+    "status",
+    "primary_reason",
+    "watch_id",
+    "registered_at_utc",
+    "expires_at_utc",
+    "zone_lower",
+    "zone_upper",
+    "support",
+    "overhead_resistance",
+    "breakout_close_utc",
+    "retest_close_utc",
+    "confirmation_close_utc",
+    "entry_observed_at_utc",
+    "entry_ask",
+    "max_entry_ask",
+    "modeled_entry_fill",
+    "stop",
+    "target",
+    "gross_quantity",
+    "net_inventory",
+    "planned_risk_usdt",
+    "exit_observed_at_utc",
+    "modeled_exit_fill",
+    "costs_usdt",
+    "net_pnl_usdt",
+    "net_r",
+    "stress_net_pnl_usdt",
+    "stress_net_r",
+    "equity_usdt",
+    "cash_usdt",
+    "open_risk_usdt",
+    "day_start_equity_usdt",
+    "week_start_equity_usdt",
+    "day_halted",
+    "week_halted",
+    "snapshot_path",
+    "card_reference",
+    "notes",
+    "ledger_event_id",
+    "exposure_certainty",
+    "outcome_certainty",
+    "cash_lower_usdt",
+    "cash_upper_usdt",
+    "equity_lower_usdt",
+    "equity_upper_usdt",
+    "net_pnl_lower_usdt",
+    "net_pnl_upper_usdt",
+    "comparison_window_id",
+    "scheduled_check_at_utc",
+    "assessment_coverage",
+    "trigger_observed_at_utc"
+  ],
+  "comparison_rows_at_amendment": 0,
+  "paper_ledger_path": "observations/manual-ledger/events.jsonl",
+  "paper_events_at_amendment": 0,
+  "shadow_account_initialization": {
+    "MPB-v1": {
+      "equity_usdt": "100",
+      "cash_usdt": "100",
+      "open_positions": [],
+      "pending_entries": [],
+      "day_start_equity_usdt": "100",
+      "week_start_equity_usdt": "100",
+      "day_halted": false,
+      "week_halted": false,
+      "note": "Synthetic trial start balance, persistent across six coins; no prior paper trades inferred."
+    },
+    "MBR-v1": {
+      "equity_usdt": "100",
+      "cash_usdt": "100",
+      "open_positions": [],
+      "pending_entries": [],
+      "day_start_equity_usdt": "100",
+      "week_start_equity_usdt": "100",
+      "day_halted": false,
+      "week_halted": false,
+      "note": "Synthetic trial start balance, persistent across six coins; no prior paper trades inferred."
+    },
+    "FBR-v1": {
+      "equity_usdt": "100",
+      "cash_usdt": "100",
+      "open_positions": [],
+      "pending_entries": [],
+      "day_start_equity_usdt": "100",
+      "week_start_equity_usdt": "100",
+      "day_halted": false,
+      "week_halted": false,
+      "note": "Synthetic trial start balance, persistent across six coins; no prior paper trades inferred."
+    }
+  },
+  "account_state_policy": "No account reset or new initialization event. Existing persistent-arm records and halts remain authoritative.",
+  "historical_risk_source": {
+    "git_commit": "60a47125fc91d28ee77d687abcdeb6fecd79f311",
+    "git_path": "tools/risk.py",
+    "sha256": "4f7be303898cfde95c76ce48794a6467a54a021a64bb27e98d3923fb1cf015a2",
+    "note": "Recoverable original sizing source for previous registrations; no earlier result was rerun."
+  },
+  "software_checks": {
+    "tests_passed": 170,
+    "new_regression_test_methods": 9,
+    "observer_tests": 59,
+    "manual_ledger_tests": 28,
+    "m15_collector_tests": 21,
+    "dedicated_sizing_tests": 7,
+    "diff_whitespace_check": "passed",
+    "untracked_file_whitespace_check": "passed",
+    "independent_sizing_review": "Passed 5000 rational helper cases and 1500 randomized exhaustive order grids; read-only offline review.",
+    "network_requests_this_repair": 0,
+    "real_observer_launched": false,
+    "paper_positions_opened": 0,
+    "live_orders": 0,
+    "profitability": "unestablished"
+  },
+  "excluded_from_forward_scoring": [
+    "all snapshots and charts inspected before registration",
+    "snapshot-fbr-smoke-20261002.json",
+    "all pre-amendment chart observations",
+    "observations/manual-fbr-fix-smoke-20261002",
+    "all synthetic test fixtures",
+    "all v2 synthetic regressions and review probes",
+    "all v3 synthetic regressions, exhaustive grids and review probes"
+  ],
+  "limitations": [
+    "Recorder still covers one FBR watch; MPB/MBR and six-pair screening require manual assessment.",
+    "Reconciliation verifies links and arithmetic, not authenticity of operator evidence or fills.",
+    "Partial inventory, transfers and arbitrary cash edits remain unsupported; closed-result resolution must stay within original bounds.",
+    "Historical research using this repaired shared risk helper requires separate code registration; old results retain original assumptions.",
+    "No live-entry eligibility or profitable edge follows from software verification."
+  ]
+}

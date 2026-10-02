@@ -1,0 +1,210 @@
+{
+  "experiment": "manual-faster-comparison-v1",
+  "amendment": "approved-operational-fixes-v1",
+  "registered_at_utc": "2026-10-02T04:42:49.786303+00:00",
+  "forward_observations_start_after_utc": "2026-10-02T04:42:49.786303+00:00",
+  "original_registration": "manual-comparison-registration-20261002.json",
+  "original_registration_sha256": "75447c54c7f70974cafefd41778a9126f2a21cb36ceb42e521d5c62795096ccc",
+  "mode": "paper_only",
+  "live_eligible": false,
+  "status": "fixed_awaiting_prospective_session",
+  "arms": [
+    "MPB-v1",
+    "MBR-v1",
+    "FBR-v1"
+  ],
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "XRPUSDT",
+    "LINKUSDT",
+    "SUIUSDT"
+  ],
+  "review_on_or_after": [
+    "2026-10-09",
+    "2026-10-16"
+  ],
+  "changes": [
+    {
+      "kind": "data_handling",
+      "detail": "Recoverable optional M15 errors preserve validated core sources with provenance; optional child deadline15s, batch25s, HTTP403/429 abort."
+    },
+    {
+      "kind": "coverage",
+      "detail": "Optional one-watch foreground FBR recorder, maximum6h/25 checks, prospective acceptance and immutable evidence; never READY, fills, exits or orders."
+    },
+    {
+      "kind": "paper_accounting",
+      "detail": "Persistent per-arm cash/equity intervals, one-position and fixed-cost risk checks; known-flat exposure releases slot even when P&L unresolved. Lower balances size later trades; conservative losses and latched halts retained."
+    },
+    {
+      "kind": "paper_accounting",
+      "detail": "Append-only event links, review block after possible risk overshoot, evidence-based resolution preserving original bounds; no arbitrary reset or partial-fill inference."
+    },
+    {
+      "kind": "wording",
+      "detail": "MPB re-registration requires its touch/reclaim trigger sequence, not a new breakout; document FBR minimum sequence latency and discretionary level rationale."
+    }
+  ],
+  "unchanged": [
+    "MPB-v1/MBR-v1/FBR-v1 technical trigger definitions",
+    "0.5% default risk, 2% per-trade ceiling, 1% total-open cap",
+    "2% daily and4% weekly loss limits with Lagos boundaries",
+    "one real position and spot-only scope",
+    ">=2:1 net reward/risk",
+    "original registration and prior research evidence"
+  ],
+  "frozen_files_sha256": {
+    "AGENTS.md": "6f47bb099f81aa595a12fc547d03a65ad959443567e61eccdd361230371709f2",
+    "manual-setups.md": "04c5d7c45b6e7701df365ddfd86f1d0cb46b7cf8d5149b45dfbb146211e60228",
+    "manual-trade-card.md": "58cd3227f68197f4aa0def3d2aa7ff4fa4f9e6e4e8a6eee6191e50dcce2fb8e8",
+    "validation.md": "126364b04a7d85528e4de5587c1a64080503d6560efd2793d39876b2d25ef3c4",
+    "research.md": "f25aa71baf7dd4a31625e8840f06898a728d76265a3ee2949e7c206aeb4cf4b2",
+    "security-review.md": "0b930ddfb6fe5db0a2b947cb032743e18bdae95acadb80922471e8597830353e",
+    "tools/market.py": "642a8972eacccbca4d0814700766cdb965eddb282b799911c79a5461b116a3d6",
+    "tools/risk.py": "4f7be303898cfde95c76ce48794a6467a54a021a64bb27e98d3923fb1cf015a2",
+    "tools/manual_observer.py": "a1a20161aa29e3ea24561644163efd35179446cd870e7568350b39a338ed862b",
+    "tools/manual_ledger.py": "1dc20df867d3c848b404f9a24635d28845d6e1c5377fd1a4a0062be85ec6c168",
+    "tests/test_market_m15.py": "50edd83a68aa6313f6c4694593e8be6a8d34d31a841cf5613851725a281c713c",
+    "tests/test_manual_observer.py": "764e9fb697f343463ea14b04a6d8bfb18cf7b1d30aebc8e980333b052108190f",
+    "tests/test_manual_ledger.py": "bb06751ffc8077712fa079f74c820e1d4b354c4d2cc863c3f0293b40c36a658f",
+    "examples/manual-watch-input.json": "8fd615952e0c6580498eb49f998b309cd3d8c981e7f16bf1cf350505580a9222"
+  },
+  "comparison_csv_columns": [
+    "record_id",
+    "supersedes_record_id",
+    "session_id",
+    "observed_at_utc",
+    "symbol",
+    "setup_version",
+    "mode",
+    "shadow_account",
+    "event_type",
+    "status",
+    "primary_reason",
+    "watch_id",
+    "registered_at_utc",
+    "expires_at_utc",
+    "zone_lower",
+    "zone_upper",
+    "support",
+    "overhead_resistance",
+    "breakout_close_utc",
+    "retest_close_utc",
+    "confirmation_close_utc",
+    "entry_observed_at_utc",
+    "entry_ask",
+    "max_entry_ask",
+    "modeled_entry_fill",
+    "stop",
+    "target",
+    "gross_quantity",
+    "net_inventory",
+    "planned_risk_usdt",
+    "exit_observed_at_utc",
+    "modeled_exit_fill",
+    "costs_usdt",
+    "net_pnl_usdt",
+    "net_r",
+    "stress_net_pnl_usdt",
+    "stress_net_r",
+    "equity_usdt",
+    "cash_usdt",
+    "open_risk_usdt",
+    "day_start_equity_usdt",
+    "week_start_equity_usdt",
+    "day_halted",
+    "week_halted",
+    "snapshot_path",
+    "card_reference",
+    "notes",
+    "ledger_event_id",
+    "exposure_certainty",
+    "outcome_certainty",
+    "cash_lower_usdt",
+    "cash_upper_usdt",
+    "equity_lower_usdt",
+    "equity_upper_usdt",
+    "net_pnl_lower_usdt",
+    "net_pnl_upper_usdt"
+  ],
+  "comparison_rows_at_amendment": 0,
+  "paper_ledger_path": "observations/manual-ledger/events.jsonl",
+  "paper_events_at_amendment": 0,
+  "initial_shadow_accounts": {
+    "MPB-v1": {
+      "equity_usdt": "100",
+      "cash_usdt": "100",
+      "open_positions": [],
+      "pending_entries": [],
+      "day_start_equity_usdt": "100",
+      "week_start_equity_usdt": "100",
+      "day_halted": false,
+      "week_halted": false,
+      "note": "Synthetic trial start balance, persistent across six coins; no prior paper trades inferred."
+    },
+    "MBR-v1": {
+      "equity_usdt": "100",
+      "cash_usdt": "100",
+      "open_positions": [],
+      "pending_entries": [],
+      "day_start_equity_usdt": "100",
+      "week_start_equity_usdt": "100",
+      "day_halted": false,
+      "week_halted": false,
+      "note": "Synthetic trial start balance, persistent across six coins; no prior paper trades inferred."
+    },
+    "FBR-v1": {
+      "equity_usdt": "100",
+      "cash_usdt": "100",
+      "open_positions": [],
+      "pending_entries": [],
+      "day_start_equity_usdt": "100",
+      "week_start_equity_usdt": "100",
+      "day_halted": false,
+      "week_halted": false,
+      "note": "Synthetic trial start balance, persistent across six coins; no prior paper trades inferred."
+    }
+  },
+  "accounting_note": "Separate hypothetical100-USDT accounts; never pool with real funds or reset on a new session. Bounds are conservative and may halt earlier than a later resolved result.",
+  "observation_scope": {
+    "maximum_hours": 6,
+    "maximum_checks": 25,
+    "pairs_per_recorder": 1,
+    "registered_watch_cadence_minutes": 15,
+    "auto_start": false,
+    "multi_hour_process_running": false,
+    "paper_entry_engine": false,
+    "notifications": false,
+    "orders": false
+  },
+  "software_checks": {
+    "tests_passed": 132,
+    "observer_tests": 37,
+    "manual_ledger_tests": 19,
+    "m15_collector_tests": 21,
+    "diff_whitespace_check": "passed",
+    "no_watch_public_smoke": "passed",
+    "smoke_completed_at_utc": "2026-10-02T04:40:19.432+00:00",
+    "smoke_evidence_directory": "observations/manual-fbr-fix-smoke-20261002",
+    "smoke_watches": 0,
+    "smoke_positions": 0,
+    "live_execution": "unverified",
+    "strategy_profitability": "unestablished"
+  },
+  "excluded_from_forward_scoring": [
+    "all snapshots and charts inspected before registration",
+    "snapshot-fbr-smoke-20261002.json",
+    "all pre-amendment chart observations",
+    "observations/manual-fbr-fix-smoke-20261002",
+    "all synthetic test fixtures"
+  ],
+  "limitations": [
+    "Recorder requires a new prospective watch; interrupted watches continue manually within original expiry, never backdated or extended.",
+    "No automated full six-pair/three-arm comparison; coverage differences must be reported.",
+    "Operator still verifies complete cards, news/events, depth for quantity, order constraints and evidence for flat exposure/outcomes.",
+    "Ledger assumes full modeled exits; partial fills, transfers and corrections outside recorded bounds remain unsupported.",
+    "Software and connectivity checks do not establish trade profitability or real protective-order acceptance."
+  ]
+}

@@ -2,6 +2,67 @@
 
 All tools run locally with Python 3.11+ and its standard library; no installation or API keys are needed. Run commands from this project directory. Nothing places orders or confers live eligibility. Security scope is recorded in security-review.md.
 
+For the active manual workflow, follow AGENTS.md and manual-setups.md. The public snapshot collector supports BTCUSDT, ETHUSDT, SOLUSDT, XRPUSDT, LINKUSDT and SUIUSDT (watchlist expanded 2026-09-29). Collect one bounded snapshot per pair into a unique file; report unavailable data rather than substitute stale observations. Each snapshot includes that pair's instrument rules and book; do not reuse BTC quantity increments or minimums for other coins. TPB-v1 strategy evaluation, historical research, observer and structured paper journal remain BTC-only; do not feed altcoin snapshots to tools.strategy or restart the observer for manual screening.
+
+## Faster manual paper comparison — FBR-v1
+
+The approved definitions are in manual-setups.md and the prospective evaluation protocol is in validation.md. At requested sessions, collect the extra 15m timeframe with:
+
+```sh
+python3 -m tools.market --symbol SOLUSDT --include-m15 --out snapshot-sol-manual-new.json
+```
+
+Choose a unique output path and repeat sequentially for the six approved symbols. The flag adds one public kline request to the existing four-request snapshot; default calls remain unchanged. Completed 15m data appear in `sources.m15.closed_candles`, with raw response provenance. Optional M15 has its own 15-second process deadline within the 25-second snapshot deadline. Recoverable timeout, malformed M15 or overlap failures omit `sources.m15`, put sanitized diagnostics/provenance in `source_errors.m15`, and retain valid required H1/H4/book/instrument sources. Required-source failures and HTTP 403/429 still abort collection; no retry or bypass. A full batch deadline can still fail the snapshot if required calls consumed too much time. Missing M15 is not permission to infer it from hourly OHLC.
+
+Every snapshot, with or without M15, must have at least one fully overlapping completed H1/H4 window, and every such window must agree on open, high, low and close. A core mismatch rejects the snapshot rather than leaving contradictory context available for manual screening. Incomplete windows at rolling-history edges are not compared. The collector and FBR observer use the same validation helper.
+
+Record all three setup assessments in manual-comparison.csv, prospectively marked levels and full cards in trade.md. Use the manual ledger below for persistent accounting and calls to tools/risk.py. The collector, existing TPB-v1 evaluator, backtest and structured journal do not implement FBR-v1 trade simulation. Paper outcomes are evidence-backed manual records, with unresolved gaps left visible. Do not run a backtest against already viewed charts and call it prospective comparison evidence.
+
+### Bounded FBR observation
+
+Copy examples/manual-watch-input.json to a local file and fill the exact symbol, unique watch ID, UTC registration/expiry, zone, support and overhead from the prospectively documented card. All template values are null to prevent accidental use as market levels. Set an applicable event cutoff from verified release times; no event search is automated. A closer resistance than the nearest confirmed swing also needs `overhead_resistance_basis`. Input registration must be within 60 seconds of launch, expiry within six hours; local acceptance is the effective registration for breakout eligibility. The tool checks levels against candles already closed at acceptance.
+
+```sh
+python3 -m tools.manual_observer --watch-input watch.local.json --directory observations/manual-fbr-watch-unique --hours 6
+python3 -m tools.manual_observer --directory observations/manual-fbr-watch-unique --report
+```
+
+Run in the foreground and stop with Ctrl-C. It checks the registered pair immediately and once per quarter-hour, with bounded requests and at most 25 checks. H1/H4/M15 source alignment follows each source's own candle duration; all still require fresh responses and the latest completed candles. At a qualifying confirmation it requests one fresh book; output remains TRIGGER_RISK_UNVERIFIED, even when quote freshness passes. Freshness uses the exchange book timestamp after confirmation, not file creation time. Trigger detection is recorded separately from quote arrival: a trigger observed before expiry remains an opportunity count if its quote arrives late, while entry status becomes MISSED_WINDOW. Account state, depth for actual size, fee-aware net reward/risk, event exposure and the complete card still need operator verification. It never emits READY, submits orders, opens paper positions or scores exits.
+
+Once an entry deadline is known, the next check enforces it before requesting more data. If a request crosses that deadline and returns missing data, the recorded state is terminal immediately; the data failure remains recorded separately. An outage cannot keep an expired trigger active until the six-hour run limit. A watch deadline that ends earlier still takes precedence.
+
+Observed breakout/retest times also bound the latest possible remaining entry: breakout close plus 3h15m, or retest close plus 1h15m, capped by the watch deadline. Missing data cannot extend observation coverage beyond those limits. The raw retest/confirmation deadline alone does not prove expiry during an outage, because an unseen candle closing exactly then may have qualified. Expiry at the latest possible bound leaves any unobserved trigger unknown; it never manufactures a trigger count or paper fill.
+
+The Mac must remain awake and connected; no sleep prevention, startup service, notifications or indefinite background job exists. Immutable local run/check files retain code hashes, accepted watch, actual timestamps, gaps and a stop record. Discrete snapshots do not prove continuous coverage or an intervening stop path. Missing M15 blocks FBR while retaining hourly evidence. HTTP 403/429 ends the run. Editing pinned code or setup rules ends the run. A lock prevents duplicate processes in one directory. New runs require fresh registrations; interrupted watches may be continued manually within their original expiry, but cannot be re-registered to extend it or import an earlier trigger. The tool does not resume old watches.
+
+`--once` performs one observation and exits. Without `--watch-input`, it collects only a BTC hourly/four-hour baseline; a longer no-watch run has hourly cadence and cannot detect FBR. `--report` is offline. Coverage includes elapsed trailing missed slots up to the applicable deadline when a suspended process resumes; early cancellation and terminal watches do not create hypothetical future misses. A smoke check is not a registered opportunity or performance evidence. The six-pair and older-arm comparison still requires session assessments; this helper covers one selected FBR watch only. Follow validation.md's common-window registration and per-arm OBSERVED/DATA_MISSING/NOT_ASSESSED fields before comparing opportunity counts. Keep unmatched observations visible.
+
+### Persistent manual paper accounts
+
+`tools.manual_ledger` is a local append/replay accounting helper for independent MPB-v1, MBR-v1 and FBR-v1 paper accounts, each initially 100 USDT shared across its six pairs. It has no network or automatic signal/exit detection. The default file is observations/manual-ledger/events.jsonl; do not choose a new ledger to reset losses. CSV rows link these event IDs and cards; the JSONL replay supplies balances, exposure, conservative ranges and halts.
+
+```sh
+python3 -m tools.manual_ledger append --event paper-event.local.json
+python3 -m tools.manual_ledger report
+```
+
+Every event requires a unique string `id`, `type`, `arm`, `mode: "paper"`, timestamp with timezone in `at`, and a nonempty `evidence` reference. Dates must follow previous events in that arm. New entry events must be observed within 60 seconds at append time. The helper validates the whole existing ledger before appending under a process lock; invalid events leave it unchanged.
+
+Entry observation age, quote age and entry expiry are checked again after acquiring the lock and immediately before writing, after replay and serialization. Lock contention or suspension cannot revive a stale quote by preserving an earlier clock reading. The original observation time remains unchanged; historical non-entry evidence remains supported.
+
+- `entry`: requires `symbol`, `bid`, `max_entry_ask`, `confirmation_at`, `entry_expires_at`, `card_reference`, and `plan` with the plan fields in examples/risk-input.json. `plan.as_of` is the actual quote time. Account fields are reconstructed from the ledger, not supplied by the caller. Only the frozen 0.1% base buy fee, 0.1% quote sell fee and declared spread/slippage model are supported for this comparison. Cash, net inventory, rounded dust, planned risk and >=2 net reward/risk come from tools.risk. The operator still verifies chart/event/depth/constraint evidence; a referenced card is not automatically audited.
+- `mark`: requires a dated `bid` if exposure may remain; marks equity and latches period halts. `boundary` requires a dated bid exactly at Lagos midnight for each crossed day with possible exposure. Flat accounts roll boundaries from cash automatically. Unknown boundary evidence cannot be replaced by a later convenient mark.
+- `exit_assessment`: links `entry_id`, gives `exposure: "open_or_flat"` or `"flat"`, and 1–32 `outcomes`, each with a unique `label` and `net_proceeds_usdt` after all exit costs. Possible remaining exposure also needs a dated `bid`. Declare flat only when every feasible path is flat under the recorded full-fill model. Earlier possible exits must remain in later bounds. Fees already charged at entry must not be subtracted again from supplied exit proceeds.
+- `resolve_outcome`: links a previously flat/bounded `entry_id` and supplies evidenced `net_proceeds_usdt` within its previous range. Original bounds remain in history; it adjusts cash and scalar results, but cannot remove previously latched halts. Arbitrary balance edits, out-of-bounds corrections, deposits, resets and partial exits are unsupported.
+- `reconcile_exposure`: settles the latest outstanding `open_or_flat` assessment using `entry_id`, `assessment_id`, new `evidence` and a nonempty `resolution_reason`. For `exposure: "open"`, provide a dated `bid` and omit outcome/proceeds fields; evidence must rule out prior possible exits, and the position continues to occupy its slot. For `exposure: "flat"`, provide supported full-exit `outcomes` in the same format as `exit_assessment`; new evidence can disprove previously possible paths. Assessment history and supersession links are retained on the position/completed trade. This event never clears loss halts or a setup-review requirement. It cannot reconcile a closed trade, an unrelated or stale assessment, or partial inventory; use `resolve_outcome` for a closed bounded result.
+- `review`: records `corrective_action` and `resumption_reason` with evidence to clear a setup-review block following planned-risk overshoot. It changes neither cash nor daily/weekly halts. Other rule breaches and weekly-review decisions still require the operator's documented check.
+
+A flat but uncertain trade releases the slot while keeping lower/upper cash and P&L. Only conservative lower cash/equity funds the next entry; loss-budget calculations retain the adverse combination of period-start and current ranges. This may block a trade even if later evidence proves a better result. Possible open exposure always blocks a second entry. Resolved-only mean R is explicitly a subset; unresolved trades are not silently wins, losses or zero returns. No ledger statistic establishes profitability, actual fills or live eligibility.
+
+The ledger now supplies its stricter conservative period allowance to the quantity search, instead of sizing first and rejecting a position that could have been smaller. `size_plan(..., risk_cap_usdt=...)` is an internal optional tightening cap; it cannot increase the default or any other policy limit. Quantity selection also includes the rounded target-exit maximum notional. Minimum sizes, fees, cash, stops, tick rounding and >=2 net reward/risk are still checked. The repaired shared risk helper has a new code hash; past research reports are not rerun or claimed to use this revision, and future frozen evaluations need a new registration.
+
+If the largest size within those limits fails net reward/risk because of fee and inventory rounding, the calculator now searches smaller increments for the largest size meeting at least 2:1. It uses exact rational counting rather than assuming net reward/risk improves monotonically with quantity or scanning every increment. The selected size must still pass the original exchange minimums and final net reward/risk check; targets, stops, costs and account allowances are unchanged.
+
 ## Workflow
 
 1. Read strategy.md and validation.md. The initial strategy is an untested hypothesis.
@@ -38,6 +99,10 @@ For a `paper` signal decision, also supply `initial_risk_usdt`, `entry`, `stop`,
 The report describes closed paper trades only. It does not estimate intratrade drawdown, statistical confidence, benchmark returns, or profitability. Those must be produced and recorded in validation.md before any live proposal. Never mix historical simulations, paper observations, and actual live trades in one performance series.
 
 To correct an event, append a `void` event with `voids_id`, `timestamp`, `reason`, and the same mode/strategy/symbol, then append the corrected event. Original rows remain in the audit trail. Void a linked outcome before voiding its signal. Reports exclude voided events. This append-only workflow is not a tamper-proof database; retain backups and do not edit the ledger directly.
+
+The TPB journal checks exposure by event timestamp, independently of append order. Trade intervals may meet at an exit/entry boundary but cannot overlap. A new unclosed signal cannot be inserted before an already recorded later trade. To correct an earlier outcome, void it and append its replacement linked to the existing signal. While the outcome is pending, performance reports and new paper entries are blocked; skip/missed observations remain allowed.
+
+To correct the signal of an earlier closed trade, void its outcome, void its signal, then append the corrected paper signal with `replaces_signal_id` set to the original voided signal ID. Append the corrected outcome with `signal_id` set to the **new** signal ID. This stages a linked correction until its complete interval passes the overlap check; reports and new paper entries stay blocked in the meantime. The source must be a voided paper signal with a previously recorded outcome and no other active replacement anywhere in its correction chain. Referring to an older ancestor cannot create a second active trade. A rejected correction is not written; correct a staged signal by voiding it and appending a valid replacement with the same original link. This workflow preserves later trades and cannot certify the truth of operator-supplied facts.
 
 ## Verification
 

@@ -1,0 +1,131 @@
+{
+  "experiment": "manual-faster-comparison-v1",
+  "registered_at_utc": "2026-10-02T04:06:54.240728+00:00",
+  "forward_observations_start_after_utc": "2026-10-02T04:06:54.240728+00:00",
+  "mode": "paper_only",
+  "status": "registered_awaiting_future_requested_session",
+  "arms": [
+    "MPB-v1",
+    "MBR-v1",
+    "FBR-v1"
+  ],
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "XRPUSDT",
+    "LINKUSDT",
+    "SUIUSDT"
+  ],
+  "initial_shadow_accounts": {
+    "MPB-v1": {
+      "equity_usdt": "100",
+      "cash_usdt": "100",
+      "open_positions": [],
+      "pending_entries": [],
+      "day_start_equity_usdt": "100",
+      "week_start_equity_usdt": "100",
+      "day_halted": false,
+      "week_halted": false,
+      "note": "Synthetic trial start balance, persistent across six coins; no prior paper trades inferred."
+    },
+    "MBR-v1": {
+      "equity_usdt": "100",
+      "cash_usdt": "100",
+      "open_positions": [],
+      "pending_entries": [],
+      "day_start_equity_usdt": "100",
+      "week_start_equity_usdt": "100",
+      "day_halted": false,
+      "week_halted": false,
+      "note": "Synthetic trial start balance, persistent across six coins; no prior paper trades inferred."
+    },
+    "FBR-v1": {
+      "equity_usdt": "100",
+      "cash_usdt": "100",
+      "open_positions": [],
+      "pending_entries": [],
+      "day_start_equity_usdt": "100",
+      "week_start_equity_usdt": "100",
+      "day_halted": false,
+      "week_halted": false,
+      "note": "Synthetic trial start balance, persistent across six coins; no prior paper trades inferred."
+    }
+  },
+  "account_timezone": "Africa/Lagos",
+  "review_on_or_after": [
+    "2026-10-09",
+    "2026-10-16"
+  ],
+  "review_requires_user_check_in": true,
+  "background_monitoring": false,
+  "live_eligible": false,
+  "frozen_files_sha256": {
+    "AGENTS.md": "b89f5cb4af2639c2c4ae08b1dbc7d1fa9366d7c896b826d9192e461f063cdb44",
+    "manual-setups.md": "65373d7c52a5933776305f6c968c369e22c75403a8d0b524ea3b8c9beb40a3d1",
+    "manual-trade-card.md": "591ff9e0bb70372b25b6d941fb897ed679fdb1ea9a75af21315e51d9fea951a2",
+    "validation.md": "55059c6a8560edc1bc7a58e773c64f1c36542eb2bd1e1375576da390d6eef17e",
+    "tools/market.py": "a0d06ca64347fb831752dfa650d6fb2e1fa043d3a13ea593b4b9054a5ef4ce12",
+    "tools/risk.py": "4f7be303898cfde95c76ce48794a6467a54a021a64bb27e98d3923fb1cf015a2",
+    "tests/test_market_m15.py": "a73a00644b479108205580ffec602df8fb49ac3d861877367d55b2b802581e3c"
+  },
+  "comparison_csv_columns": [
+    "record_id",
+    "supersedes_record_id",
+    "session_id",
+    "observed_at_utc",
+    "symbol",
+    "setup_version",
+    "mode",
+    "shadow_account",
+    "event_type",
+    "status",
+    "primary_reason",
+    "watch_id",
+    "registered_at_utc",
+    "expires_at_utc",
+    "zone_lower",
+    "zone_upper",
+    "support",
+    "overhead_resistance",
+    "breakout_close_utc",
+    "retest_close_utc",
+    "confirmation_close_utc",
+    "entry_observed_at_utc",
+    "entry_ask",
+    "max_entry_ask",
+    "modeled_entry_fill",
+    "stop",
+    "target",
+    "gross_quantity",
+    "net_inventory",
+    "planned_risk_usdt",
+    "exit_observed_at_utc",
+    "modeled_exit_fill",
+    "costs_usdt",
+    "net_pnl_usdt",
+    "net_r",
+    "stress_net_pnl_usdt",
+    "stress_net_r",
+    "equity_usdt",
+    "cash_usdt",
+    "open_risk_usdt",
+    "day_start_equity_usdt",
+    "week_start_equity_usdt",
+    "day_halted",
+    "week_halted",
+    "snapshot_path",
+    "card_reference",
+    "notes"
+  ],
+  "prior_evidence_excluded_from_forward_scoring": [
+    "all snapshots and charts inspected before registration",
+    "snapshot-fbr-smoke-20261002.json"
+  ],
+  "software_checks": {
+    "tests_passed": 63,
+    "new_m15_tests": 8,
+    "public_m15_smoke": "passed",
+    "strategy_profitability": "unestablished"
+  }
+}

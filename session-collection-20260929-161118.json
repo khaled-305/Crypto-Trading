@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "BTCUSDT",
+    "file": "snapshot-session-btcusdt-20260929-161118.json",
+    "exit_code": 0,
+    "message": "Saved research snapshot: snapshot-session-btcusdt-20260929-161118.json"
+  },
+  {
+    "symbol": "ETHUSDT",
+    "file": "snapshot-session-ethusdt-20260929-161118.json",
+    "exit_code": 0,
+    "message": "Saved research snapshot: snapshot-session-ethusdt-20260929-161118.json"
+  },
+  {
+    "symbol": "SOLUSDT",
+    "file": "snapshot-session-solusdt-20260929-161118.json",
+    "exit_code": 0,
+    "message": "Saved research snapshot: snapshot-session-solusdt-20260929-161118.json"
+  },
+  {
+    "symbol": "XRPUSDT",
+    "file": "snapshot-session-xrpusdt-20260929-161118.json",
+    "exit_code": 0,
+    "message": "Saved research snapshot: snapshot-session-xrpusdt-20260929-161118.json"
+  },
+  {
+    "symbol": "LINKUSDT",
+    "file": "snapshot-session-linkusdt-20260929-161118.json",
+    "exit_code": 0,
+    "message": "Saved research snapshot: snapshot-session-linkusdt-20260929-161118.json"
+  },
+  {
+    "symbol": "SUIUSDT",
+    "file": "snapshot-session-suiusdt-20260929-161118.json",
+    "exit_code": 0,
+    "message": "Saved research snapshot: snapshot-session-suiusdt-20260929-161118.json"
+  }
+]

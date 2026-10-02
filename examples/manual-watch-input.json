@@ -1,0 +1,10 @@
+{
+  "watch_id": null,
+  "symbol": null,
+  "registered_at": null,
+  "expires_at": null,
+  "zone": {"lower": null, "upper": null},
+  "support": null,
+  "overhead_resistance": null,
+  "event_cutoff": null
+}

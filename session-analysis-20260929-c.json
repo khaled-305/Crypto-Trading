@@ -1,0 +1,56 @@
+{
+  "recorded_at": "2026-09-29T09:23:33.968188+00:00",
+  "session_start_utc": "2026-09-29T09:19:36+00:00",
+  "status": "WAIT",
+  "account_user_confirmed": {
+    "equity_usdt": "100",
+    "positions": 0,
+    "pending_orders": 0,
+    "changes_since_last_confirmation": false
+  },
+  "candidates": [
+    {
+      "pair": "BTCUSDT",
+      "status": "WAIT",
+      "reason": "fresh_data_unavailable",
+      "failure": "timeout",
+      "snapshot_accepted": false
+    },
+    {
+      "pair": "ETHUSDT",
+      "status": "WAIT",
+      "reason": "fresh_data_unavailable",
+      "failure": "timeout",
+      "snapshot_accepted": false
+    },
+    {
+      "pair": "SOLUSDT",
+      "status": "WAIT",
+      "reason": "fresh_data_unavailable",
+      "failure": "timeout",
+      "snapshot_accepted": false
+    },
+    {
+      "pair": "XRPUSDT",
+      "status": "WAIT",
+      "reason": "fresh_data_unavailable",
+      "failure": "timeout",
+      "snapshot_accepted": false
+    },
+    {
+      "pair": "LINKUSDT",
+      "status": "WAIT",
+      "reason": "fresh_data_unavailable",
+      "failure": "dns",
+      "snapshot_accepted": false
+    },
+    {
+      "pair": "SUIUSDT",
+      "status": "WAIT",
+      "reason": "fresh_data_unavailable",
+      "failure": "dns",
+      "snapshot_accepted": false
+    }
+  ],
+  "entry_plan": null
+}
